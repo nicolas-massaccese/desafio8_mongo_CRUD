@@ -1,0 +1,453 @@
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.createCollection("products")
+{ ok: 1 }
+ecommerce> db.createCollection("messages")
+{ ok: 1 }
+ecommerce> show collections
+messages
+products
+ecommerce> var productsToAdd = [{name:'Dunkerque', description:'bolso', price:4990, photo:'http..', sotck:7},{name:'Yetstring', description:'bolso', price:4320, photo:'http..', sotck:5},{name:'Alpha', description:'mochila', price:3350, photo:'http..', sotck:5},{name:'Amelia', description:'mochila', price:2860, photo:'http..', sotck:3},{name:'IFR', description:'bolso de vuelo', price:2300, photo:'http..', sotck:8},{name:'Halcón', description:'bolso de vuelo', price:1700, photo:'http..', sotck:5},{name:'F16', description:'bolso de vuelo', price:1280, photo:'http..', sotck:5},{name:'Dunkerque Compact', description:'morral', price:900, photo:'http..', sotck:2},{name:'fels', description:'cartera', price:580, photo:'http..', sotck:3},{name:'1000-FT Wallet', description:'billetera', price:120, photo:'http..', sotck:8}]
+
+ecommerce> db.products.insertMany(productsToAdd)
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63cda2a12cfd67ffdbcf3129"),
+    '1': ObjectId("63cda2a12cfd67ffdbcf312a"),
+    '2': ObjectId("63cda2a12cfd67ffdbcf312b"),
+    '3': ObjectId("63cda2a12cfd67ffdbcf312c"),
+    '4': ObjectId("63cda2a12cfd67ffdbcf312d"),
+    '5': ObjectId("63cda2a12cfd67ffdbcf312e"),
+    '6': ObjectId("63cda2a12cfd67ffdbcf312f"),
+    '7': ObjectId("63cda2a12cfd67ffdbcf3130"),
+    '8': ObjectId("63cda2a12cfd67ffdbcf3131"),
+    '9': ObjectId("63cda2a12cfd67ffdbcf3132")
+  }
+}
+ecommerce> var messageToAdd = [{email:'pepe@hotmail.com',message:'hola amigo', timestamp:new Date()},{email:'tito@hotmail.com',message:'hola todo bien?', timestamp:new Date()},{email:'jimena@hotmail.com',message:'todo bien por ahi_', timestamp:new Date()},{email:'raquel@hotmail.com',message:'si, muy aburrida', timestamp:new Date()},{email:'juio@hotmail.com',message:'que hacen esta noche?', timestamp:new Date()},{email:'elsa@hotmail.com',message:'nos juntamos en la casa de pepe', timestamp:new Date()},{email:'cinthia@hotmail.com',message:'hay algo en especial', timestamp:new Date()},{email:'rober@hotmail.com',message:'es el cumple de pepe', timestamp:new Date()},{email:'diego@hotmail.com',message:'buensiimoooooo', timestamp:new Date()},{email:'rita@hotmail.com',message:'nos vemos a las 22hs', timestamp:new Date()},]
+
+ecommerce> db.messages.insertMany(messageToAdd)
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63cda965ee86cb27085db4c0"),
+    '1': ObjectId("63cda965ee86cb27085db4c1"),
+    '2': ObjectId("63cda965ee86cb27085db4c2"),
+    '3': ObjectId("63cda965ee86cb27085db4c3"),
+    '4': ObjectId("63cda965ee86cb27085db4c4"),
+    '5': ObjectId("63cda965ee86cb27085db4c5"),
+    '6': ObjectId("63cda965ee86cb27085db4c6"),
+    '7': ObjectId("63cda965ee86cb27085db4c7"),
+    '8': ObjectId("63cda965ee86cb27085db4c8"),
+    '9': ObjectId("63cda965ee86cb27085db4c9")
+  }
+}
+ecommerce> db.messages.find({})
+[
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c0"),
+    email: 'pepe@hotmail.com',
+    message: 'hola amigo',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c1"),
+    email: 'tito@hotmail.com',
+    message: 'hola todo bien?',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c2"),
+    email: 'jimena@hotmail.com',
+    message: 'todo bien por ahi_',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c3"),
+    email: 'raquel@hotmail.com',
+    message: 'si, muy aburrida',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c4"),
+    email: 'juio@hotmail.com',
+    message: 'que hacen esta noche?',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c5"),
+    email: 'elsa@hotmail.com',
+    message: 'nos juntamos en la casa de pepe',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c6"),
+    email: 'cinthia@hotmail.com',
+    message: 'hay algo en especial',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c7"),
+    email: 'rober@hotmail.com',
+    message: 'es el cumple de pepe',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c8"),
+    email: 'diego@hotmail.com',
+    message: 'buensiimoooooo',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  },
+  {
+    _id: ObjectId("63cda965ee86cb27085db4c9"),
+    email: 'rita@hotmail.com',
+    message: 'nos vemos a las 22hs',
+    timestamp: ISODate("2023-01-22T21:23:24.941Z")
+  }
+]
+ecommerce> db.products.find({})
+[
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3129"),
+    name: 'Dunkerque',
+    description: 'bolso',
+    price: 4990,
+    photo: 'http..',
+    sotck: 7
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312a"),
+    name: 'Yetstring',
+    description: 'bolso',
+    price: 4320,
+    photo: 'http..',
+    sotck: 5
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312b"),
+    name: 'Alpha',
+    description: 'mochila',
+    price: 3350,
+    photo: 'http..',
+    sotck: 5
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312c"),
+    name: 'Amelia',
+    description: 'mochila',
+    price: 2860,
+    photo: 'http..',
+    sotck: 3
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312d"),
+    name: 'IFR',
+    description: 'bolso de vuelo',
+    price: 2300,
+    photo: 'http..',
+    sotck: 8
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312e"),
+    name: 'Halcón',
+    description: 'bolso de vuelo',
+    price: 1700,
+    photo: 'http..',
+    sotck: 5
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312f"),
+    name: 'F16',
+    description: 'bolso de vuelo',
+    price: 1280,
+    photo: 'http..',
+    sotck: 5
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3130"),
+    name: 'Dunkerque Compact',
+    description: 'morral',
+    price: 900,
+    photo: 'http..',
+    sotck: 2
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3131"),
+    name: 'fels',
+    description: 'cartera',
+    price: 580,
+    photo: 'http..',
+    sotck: 3
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3132"),
+    name: '1000-FT Wallet',
+    description: 'billetera',
+    price: 120,
+    photo: 'http..',
+    sotck: 8
+  }
+]
+ecommerce> db.products.estimatedDocumentCount()
+10
+ecommerce> db.messages.estimatedDocumentCount()
+10
+ecommerce> db.products.insertOne({name:'Stuka', description:'bolso de vuelo', price:2500, photo:'http...', stock:3})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63cdec890b9ce65c4d5c7538")
+}
+ecommerce> db.products.find({price:{$lt:1000}})
+[
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3130"),
+    name: 'Dunkerque Compact',
+    description: 'morral',
+    price: 900,
+    photo: 'http..',
+    sotck: 2
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3131"),
+    name: 'fels',
+    description: 'cartera',
+    price: 580,
+    photo: 'http..',
+    sotck: 3
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3132"),
+    name: '1000-FT Wallet',
+    description: 'billetera',
+    price: 120,
+    photo: 'http..',
+    sotck: 8
+  }
+]
+ecommerce> db.products.find({$and:[{price:{$gt:1000}},{price:{$lt:3000}}]})
+[
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312c"),
+    name: 'Amelia',
+    description: 'mochila',
+    price: 2860,
+    photo: 'http..',
+    sotck: 3
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312d"),
+    name: 'IFR',
+    description: 'bolso de vuelo',
+    price: 2300,
+    photo: 'http..',
+    sotck: 8
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312e"),
+    name: 'Halcón',
+    description: 'bolso de vuelo',
+    price: 1700,
+    photo: 'http..',
+    sotck: 5
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312f"),
+    name: 'F16',
+    description: 'bolso de vuelo',
+    price: 1280,
+    photo: 'http..',
+    sotck: 5
+  },
+  {
+    _id: ObjectId("63cdec890b9ce65c4d5c7538"),
+    name: 'Stuka',
+    description: 'bolso de vuelo',
+    price: 2500,
+    photo: 'http...',
+    stock: 3
+  }
+]
+ecommerce> db.products.find({price:{$gt:3000}})
+[
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3129"),
+    name: 'Dunkerque',
+    description: 'bolso',
+    price: 4990,
+    photo: 'http..',
+    sotck: 7
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312a"),
+    name: 'Yetstring',
+    description: 'bolso',
+    price: 4320,
+    photo: 'http..',
+    sotck: 5
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312b"),
+    name: 'Alpha',
+    description: 'mochila',
+    price: 3350,
+    photo: 'http..',
+    sotck: 5
+  }
+]
+ecommerce> db.products.find({}).sort({price:1}).skip(2).limit(1)
+[
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3130"),
+    name: 'Dunkerque Compact',
+    description: 'morral',
+    price: 900,
+    photo: 'http..',
+    sotck: 2
+  }
+]
+ecommerce> db.products.updateMany({}, {$set:{stock: 100}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0
+}
+ecommerce> db.products.find({})
+[
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3129"),
+    name: 'Dunkerque',
+    description: 'bolso',
+    price: 4990,
+    photo: 'http..',
+    sotck: 7,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312a"),
+    name: 'Yetstring',
+    description: 'bolso',
+    price: 4320,
+    photo: 'http..',
+    sotck: 5,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312b"),
+    name: 'Alpha',
+    description: 'mochila',
+    price: 3350,
+    photo: 'http..',
+    sotck: 5,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312c"),
+    name: 'Amelia',
+    description: 'mochila',
+    price: 2860,
+    photo: 'http..',
+    sotck: 3,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312d"),
+    name: 'IFR',
+    description: 'bolso de vuelo',
+    price: 2300,
+    photo: 'http..',
+    sotck: 8,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312e"),
+    name: 'Halcón',
+    description: 'bolso de vuelo',
+    price: 1700,
+    photo: 'http..',
+    sotck: 5,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312f"),
+    name: 'F16',
+    description: 'bolso de vuelo',
+    price: 1280,
+    photo: 'http..',
+    sotck: 5,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3130"),
+    name: 'Dunkerque Compact',
+    description: 'morral',
+    price: 900,
+    photo: 'http..',
+    sotck: 2,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3131"),
+    name: 'fels',
+    description: 'cartera',
+    price: 580,
+    photo: 'http..',
+    sotck: 3,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3132"),
+    name: '1000-FT Wallet',
+    description: 'billetera',
+    price: 120,
+    photo: 'http..',
+    sotck: 8,
+    stock: 100
+  },
+  {
+    _id: ObjectId("63cdec890b9ce65c4d5c7538"),
+    name: 'Stuka',
+    description: 'bolso de vuelo',
+    price: 2500,
+    photo: 'http...',
+    stock: 100
+  }
+]
+ecommerce> db.products.updateMany({price:{$gt: 4000}}, {$set:{stock: 0}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+ecommerce> db.products.find({price:{$gt:4000}})
+[
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf3129"),
+    name: 'Dunkerque',
+    description: 'bolso',
+    price: 4990,
+    photo: 'http..',
+    sotck: 7,
+    stock: 0
+  },
+  {
+    _id: ObjectId("63cda2a12cfd67ffdbcf312a"),
+    name: 'Yetstring',
+    description: 'bolso',
+    price: 4320,
+    photo: 'http..',
+    sotck: 5,
+    stock: 0
+  }
+]
+ecommerce> db.products.deleteMany({price:{$lt: 1000}})
+{ acknowledged: true, deletedCount: 3 }
+test> use admin
+switched to db admin
+admin> db.createUser({user: 'pepe', pwd:'asd456', roles: [{role: 'read', db: 'ecommerce'}]})
+{ ok: 1 }
+
